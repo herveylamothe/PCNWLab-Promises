@@ -1,4 +1,4 @@
-# Functional
+<!-- # Functional
 
 This pset is intended to guage your ability to _use_ promises for practical purposes
 
@@ -6,13 +6,13 @@ This pset is intended to guage your ability to _use_ promises for practical purp
 
 ### 1
 
-We know how to use `fs.readFile` - 
+We know how to use `fs.readFile` -  -->
 
 ```js
 const fs = require('fs')
 fs.readFile('filename', 'utf-8', (err, data) => console.log(err, data))
 ```
-
+<!-- 
 This is fine but becomes cumbersome when we want to read multiple files, etc. Write a function `readFilePromise` that returns a promise with file data on success or err info on fail.
 
 ### 2
@@ -83,4 +83,4 @@ fsReadPromise('foo.txt', 'utf-8').then(data => console.log(data)).catch(e => con
 
 ```
 
-(We call this a higher order function because it _takes_ a function and returns a _new_ function with added functionality. lol)
+(We call this a higher order function because it _takes_ a function and returns a _new_ function with added functionality. lol) -->
