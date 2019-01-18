@@ -5,14 +5,13 @@
 // ## Problems
 const fs = require('fs')
 //fs.readFile('./test.txt', 'utf-8', (err, data) => console.log(err, data))
-const readFilePromise = (filePath) =>{
-    return new Promise((resolve, reject) =>{
+const readFilePromise = (filePath) => {
+    return new Promise((resolve, reject) => {
         fs.readFile(filePath, 'utf-8', (err, data) => {
-            if(!err){
+            if (!err) {
                 resolve()
 
-            }
-            else{
+            } else {
                 reject(err);
             }
         })
@@ -21,11 +20,11 @@ const readFilePromise = (filePath) =>{
 }
 
 readFilePromise('./test.txt')
-.then((data) => {
-    console.log(data);
-}, (error) => {
-console.log(error)
-})
+    .then((data) => {
+        console.log(data);
+    }, (error) => {
+        console.log(error)
+    })
 // ### 1
 
 // We know how to use `fs.readFile` - 
@@ -38,14 +37,13 @@ console.log(error)
 // This is fine but becomes cumbersome when we want to read multiple files, etc. Write a function `readFilePromise` that returns a promise with file data on success or err info on fail.
 
 // ### 2
-const writeFilePromise = (filePath,data) =>{
-    return new Promise((resolve, reject) =>{
+const writeFilePromise = (filePath, data) => {
+    return new Promise((resolve, reject) => {
         fs.writeFile(filePath, data, (err) => {
-            if(!err){
+            if (!err) {
                 resolve(data)
 
-            }
-            else{
+            } else {
                 reject(err);
             }
         })
@@ -53,14 +51,14 @@ const writeFilePromise = (filePath,data) =>{
     })
 }
 
-writeFilePromise('./test2.txt',"This is Hervey L")
+writeFilePromise('./test2.txt', "This is Hervey L")
 
-//exta stuff below
-.then(() => {
-    console.log("It has been written!");
-}, (err) => {
-    console.log("It didnt work")
-})
+    //exta stuff below
+    .then(() => {
+        console.log("It has been written!");
+    }, (err) => {
+        console.log("It didnt work")
+    })
 
 // Do the same, but now for `fs.writeFile`. Call it `writeFilePromise`
 
@@ -69,9 +67,9 @@ writeFilePromise('./test2.txt',"This is Hervey L")
 // Write a function called `copyFile` that internally uses `readFilePromise` and `writeFilePromise` to perform the copy operation.
 const copyFile = (file1, file2) => {
     readFilePromise(file1)
-    .then((file1Data) =>{
-        writeFilePromise(file2, file1Data)
-    })
+        .then((file1Data) => {
+            writeFilePromise(file2, file1Data)
+        })
 }
 copyFile("test.txt", "test2.txt");
 // ```js
@@ -89,14 +87,17 @@ const concatFiles = (fileNames, newFile) => {
     //join.array into string
     //write this string into a new file
     const readArray = [];
-    for(let i = 0; i < fileNames.length; i++){
+    for (let i = 0; i < fileNames.length; i++) {
         readFilePromise(fileNames[i])
-        .then((data) => {
-            readArray.push(data);
-        })
+            .then((data) => {
+                readArray.push(data);
+            })
         const string = readArray.join('/n')
+        console.log("im printing the data", string)
+        //writeFilePromise("concatFile", )
     }
- }
+}
+concatFiles(["test.txt", "test2.txt2"], ' filex')
 // ```
 
 
